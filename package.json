@@ -1,22 +1,35 @@
 {
-  "name": "lowell.channels.rsswidget",
+  "name": "@lowell-nordic/rsswidget",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "readme.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lindorff/lowell.channels.rsswidget"
+  },
   "dependencies": {
-    "@types/jest": "24.0.21",
-    "@types/node": "12.12.5",
-    "@types/react": "16.9.11",
-    "@types/react-dom": "16.9.3",
+    "react-use": "^13.2.1",
+    "rss-parser": "^3.7.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0",
-    "react-use": "^13.2.1",
-    "rss-parser": "^3.7.3",
-    "typescript": "3.6.4"
+    "react-scripts": "3.2.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf dist && babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

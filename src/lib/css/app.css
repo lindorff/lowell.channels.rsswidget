@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+#rss-widget {
+    font-family: 'Roboto', sans-serif;
+}
+.rw-widget {
+    width: 350px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #eee;
+    box-shadow: 5px 5px 10px #777;
+    position: absolute;
+}
+.rw-left {
+    left: 10;
+}
+.rw-right {
+    left: calc(100vw - 370px);
+}
+.rw-title {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 5px;
+    height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.rw-content {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+}
+.rw-clickable {
+    cursor: pointer;
+}
+.rw-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rw-jc-sb-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.rw-open-button {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background: #4cc0ad;
+    font-weight: 900;
+    color: #fff;
+    font-size: larger;
+}
+.rw-close-button {
+    border-radius: 5px;
+    padding: 5px;
+    background: #ccc;
+    height: 25px;
+    width: 25px;
+    font-weight: 900;
+}
+.rw-slide-animation-left {
+    animation-duration: 300ms;
+    animation-name: slideFromLeft;
+}
+@keyframes slideFromLeft {
+    from {
+        left: -400px;
+    }
+    to {
+        left: 0;
+    }
+}
+.rw-slide-animation-right {
+    animation-duration: 300ms;
+    animation-name: slideFromRight;
+}
+@keyframes slideFromRight {
+    from {
+        left: calc(100vw + 50px);
+    }
+    to {
+        left: calc(100vw - 360px);
+    }
+}
