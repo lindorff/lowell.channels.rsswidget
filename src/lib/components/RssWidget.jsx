@@ -48,7 +48,9 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
                         handleClick={() => setShow(false)}
                         count={feed ? feed.filter(item => !readItems.includes(item.id)).length : 0}
                     />
-                    {rssItems}
+                    <div className="rw-rss-item-list">
+                        {rssItems}
+                    </div>
                 </div>
             )}
             <OpenButton

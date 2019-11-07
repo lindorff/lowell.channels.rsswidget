@@ -11,6 +11,11 @@
     box-shadow: 5px 5px 10px #777;
     position: fixed;
 }
+.rw-rss-item-list {
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
 .rw-left {
     left: 10px;
 }
@@ -21,7 +26,13 @@
     font-size: 16px;
     font-weight: 900;
     margin-bottom: 5px;
-    height: 40px;
+    max-width: 90%;
+}
+.rw-title-read {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 5px;
+    /* height: 40px; */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -61,6 +72,7 @@
     height: 25px;
     width: 25px;
     font-weight: 900;
+    margin-bottom: 5px;
 }
 .rw-slide-animation-left {
     animation-duration: 300ms;

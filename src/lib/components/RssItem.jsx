@@ -13,7 +13,7 @@ const RssItem = ({ read, title, content, link, id, markItemAsRead }) => {
     return (
         <div style={containerStyle}>
             <div className="rw-jc-sb-row">
-                <div className="rw-title">{title}</div>
+                <div className={`rw-title ${read && 'rw-title-read'}`}>{title}</div>
                 <MarkAsReadButton
                     handleClick={() => markItemAsRead(id)}
                     read={read}
