@@ -40,7 +40,7 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
     const validPosition = ['left', 'right'].includes(position);
 
     return (
-        <div id="rss-widget">
+        <div id="rw-rss-widget">
             {show && (
                 <div className={`rw-widget rw-slide-animation-${validPosition ? position : 'left'} rw-${validPosition ? position : 'left'}`}>
                     <CloseButton

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-#rss-widget {
+#rw-rss-widget {
     font-family: 'Roboto', sans-serif;
 }
 .rw-widget {
@@ -9,10 +9,10 @@
     border-radius: 5px;
     background: #eee;
     box-shadow: 5px 5px 10px #777;
-    position: absolute;
+    position: fixed;
 }
 .rw-left {
-    left: 10;
+    left: 10px;
 }
 .rw-right {
     left: calc(100vw - 370px);
