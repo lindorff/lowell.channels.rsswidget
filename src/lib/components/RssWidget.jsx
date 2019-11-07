@@ -9,7 +9,7 @@ import '../css/app.css';
 const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
     const [show, setShow] = useState(false);
     const [feed, setFeed] = useState([]);
-    const [readItems, setReadItems] = useLocalStorage('readItems', []);
+    const [readItems, setReadItems] = useLocalStorage('rw-readItems', []);
 
     useEffect(() => {
         readRssData(rssFeedSource, rssFeedType).then(res => setFeed(res));
