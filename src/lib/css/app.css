@@ -10,6 +10,8 @@
     background: #eee;
     box-shadow: 5px 5px 10px #777;
     position: fixed;
+    top: 10px;
+    z-index: 99;
 }
 .rw-rss-item-list {
     position: relative;
@@ -20,7 +22,7 @@
     left: 10px;
 }
 .rw-right {
-    left: calc(100vw - 370px);
+    right: 10px;
 }
 .rw-title {
     font-size: 16px;
@@ -29,19 +31,13 @@
     max-width: 90%;
 }
 .rw-title-read {
-    font-size: 16px;
-    font-weight: 900;
-    margin-bottom: 5px;
-    /* height: 40px; */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 .rw-content {
     font-size: 14px;
-    overflow: hidden;
-    white-space: pre;
-    text-overflow: ellipsis;
+    white-space: pre-wrap;
 }
 .rw-clickable {
     cursor: pointer;
@@ -83,7 +79,7 @@
         left: -400px;
     }
     to {
-        left: 0;
+        left: 10px;
     }
 }
 .rw-slide-animation-right {
@@ -92,9 +88,9 @@
 }
 @keyframes slideFromRight {
     from {
-        left: calc(100vw + 50px);
+        right: -400px;
     }
     to {
-        left: calc(100vw - 360px);
+        right: 10px;
     }
 }
