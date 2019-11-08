@@ -1,7 +1,7 @@
 import React from 'react';
 import MarkAsReadButton from './MarkAsReadButton';
 
-const RssItem = ({ read, title, content, link, id, markItemAsRead }) => {
+const RssItem = ({ read, title, content, link, markItemAsRead }) => {
     const containerStyle = {
         background: read ? '#ddd' : '#fff',
         color: '#000',
@@ -15,7 +15,7 @@ const RssItem = ({ read, title, content, link, id, markItemAsRead }) => {
             <div className="rw-jc-sb-row">
                 <div className={`rw-title ${read && 'rw-title-read'}`}>{title}</div>
                 <MarkAsReadButton
-                    handleClick={() => markItemAsRead(id)}
+                    handleClick={() => markItemAsRead(link)}
                     read={read}
                 />
             </div>
@@ -25,7 +25,7 @@ const RssItem = ({ read, title, content, link, id, markItemAsRead }) => {
                         {content}
                     </div>
                     <div>
-                        {!!link && <a target="_blank" rel="noopener noreferrer" href={link}>Read more</a>}
+                        {!!link && <a target="_blank" rel="noopener noreferrer" href={link}>{'Read more'}</a>}
                     </div>
                 </div>)}
         </div>

@@ -16,12 +16,24 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
     }, [rssFeedSource, rssFeedType]);
 
     const markItemAsRead = (id) => {
-        const items = [...readItems];
-        if (!items.includes(id)) {
-            items.push(id);
-            setReadItems(items);
+        const readItemsNew = [...readItems];
+        if (!readItemsNew.includes(id)) {
+            readItemsNew.push(id);
+            setReadItems(readItemsNew);
         } else {
-            setReadItems(items.filter(item => item !== id));
+            setReadItems(readItemsNew.filter(item => item !== id));
+        }
+    };
+
+    const markAllAsRead = (items) => {
+        const readItemsNew = [...readItems];
+        if (items.length > 1) {
+            items.forEach((item) => {
+                if (!items.includes(item.link)) {
+                    readItemsNew.push(item.link);
+                }
+            });
+            setReadItems(readItemsNew);
         }
     };
 
@@ -32,7 +44,6 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
             content={item.contentSnippet}
             link={item.link}
             markItemAsRead={markItemAsRead}
-            id={item.link}
             key={item.link}
         />
     ));
@@ -43,11 +54,18 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
         <div id="rw-rss-widget">
             {show && (
                 <div className={`rw-widget rw-slide-animation-${validPosition ? position : 'left'} rw-${validPosition ? position : 'left'}`}>
-                    <CloseButton
-                        show={show}
-                        handleClick={() => setShow(false)}
-                        count={feed ? feed.filter(item => !readItems.includes(item.id)).length : 0}
-                    />
+                    <div className="rw-jc-sb-row">
+                        <CloseButton
+                            handleClick={() => setShow(false)}
+                        />
+                        <div
+                            style={{ alignSelf: 'flex-end', padding: '0 10px 5px 0' }}
+                            className="rw-clickable"
+                            onClick={() => markAllAsRead(feed.filter(item => !readItems.includes(item.link)))}
+                        >
+                            {'Mark all as read'}
+                        </div>
+                    </div>
                     <div className="rw-rss-item-list">
                         {rssItems}
                     </div>
