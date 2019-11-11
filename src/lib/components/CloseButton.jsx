@@ -1,9 +1,20 @@
 import React from 'react';
+import { clickable, centered, bold } from '../styles';
 
-const ToggleButton = ({ handleClick }) => {
+const CloseButton = ({ handleClick }) => {
     return (
         <div
-            className='rw-clickable rw-centered rw-close-button'
+            style={{
+                borderRadius: '5px',
+                padding: '5px',
+                background: '#ccc',
+                width: '25px',
+                height: '25px',
+                marginBottom: '5px',
+                ...bold,
+                ...clickable,
+                ...centered,
+            }}
             onClick={() => handleClick()}
         >
             <div>
@@ -13,4 +24,4 @@ const ToggleButton = ({ handleClick }) => {
     );
 };
 
-export default ToggleButton;
+export default CloseButton;

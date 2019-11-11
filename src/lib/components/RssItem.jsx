@@ -1,8 +1,9 @@
 import React from 'react';
 import MarkAsReadButton from './MarkAsReadButton';
+import { jcSbRow, bold } from '../styles';
 
 const RssItem = ({ read, title, content, link, markItemAsRead }) => {
-    const containerStyle = {
+    const style = {
         background: read ? '#ddd' : '#fff',
         color: '#000',
         padding: '10px',
@@ -10,17 +11,37 @@ const RssItem = ({ read, title, content, link, markItemAsRead }) => {
         border: '1px solid #ccc',
         margin: '8px',
     };
+    const titleReadStyle = read ? {
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+    } : {};
     return (
-        <div style={containerStyle}>
-            <div className="rw-jc-sb-row">
-                <div className={`rw-title ${read && 'rw-title-read'}`}>{title}</div>
+        <div style={style}>
+            <div style={{ ...jcSbRow }}>
+                <div
+                    style={{
+                        ...bold,
+                        fontSize: '16px',
+                        marginBottom: '5px',
+                        maxWidth: '90%',
+                        ...titleReadStyle,
+                    }}
+                >
+                    {title}
+                </div>
                 <MarkAsReadButton
                     handleClick={() => markItemAsRead(link)}
                     read={read}
                 />
             </div>
             {!read && (
-                <div className="rw-content">
+                <div
+                    style={{
+                        fontSize: '14px',
+                        whiteSpace: 'pre-wrap',
+                    }}
+                >
                     <div>
                         {content}
                     </div>

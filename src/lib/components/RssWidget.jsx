@@ -4,7 +4,7 @@ import RssItem from './RssItem';
 import CloseButton from './CloseButton';
 import OpenButton from './OpenButton';
 import readRssData from '../utils/RssReader';
-import '../css/app.css';
+import { jcSbRow, clickable } from '../styles';
 
 const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
     const [show, setShow] = useState(false);
@@ -49,32 +49,53 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
     ));
 
     const validPosition = ['left', 'right'].includes(position);
-
+    const pos = (position) => {
+        const style = {};
+        style[position] = show ? '10px' : '-400px';
+        return style;
+    };
     return (
         <div id="rw-rss-widget">
-            {show && (
-                <div className={`rw-widget rw-slide-animation-${validPosition ? position : 'left'} rw-${validPosition ? position : 'left'}`}>
-                    <div className="rw-jc-sb-row">
-                        <CloseButton
-                            handleClick={() => setShow(false)}
-                        />
-                        <div
-                            style={{ alignSelf: 'flex-end', padding: '0 10px 5px 0' }}
-                            className="rw-clickable"
-                            onClick={() => markAllAsRead(feed.filter(item => !readItems.includes(item.link)))}
-                        >
-                            {'Mark all as read'}
-                        </div>
-                    </div>
-                    <div className="rw-rss-item-list">
-                        {rssItems}
-                    </div>
-                </div>
-            )}
             <OpenButton
                 handleClick={() => setShow(true)}
                 count={feed ? feed.filter(item => !readItems.includes(item.link)).length : 0}
             />
+            <div
+                style={{
+                    width: '350px',
+                    padding: '2px',
+                    border: 'solid 1px #ccc',
+                    borderRadius: '5px',
+                    background: '#eee',
+                    boxShadow: '5px 5px 10px #777',
+                    position: 'fixed',
+                    top: '10px',
+                    zIndex: '99',
+                    ...pos(position),
+                    transition: `${validPosition ? position : 'unset'} 300ms`,
+                }}
+            >
+                <div style={jcSbRow}>
+                    <CloseButton
+                        handleClick={() => setShow(false)}
+                    />
+                    <div
+                        style={{ alignSelf: 'flex-end', padding: '0 10px 5px 0', ...clickable }}
+                        onClick={() => markAllAsRead(feed.filter(item => !readItems.includes(item.link)))}
+                    >
+                        {'Mark all as read'}
+                    </div>
+                </div>
+                <div
+                    style={{
+                        position: 'relative',
+                        maxHeight: '90vh',
+                        overflowY: 'auto',
+                    }}
+                >
+                    {rssItems}
+                </div>
+            </div>
         </div>
     );
 };

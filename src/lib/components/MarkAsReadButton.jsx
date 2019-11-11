@@ -10,7 +10,7 @@ const MarkAsReadButton = ({ handleClick, read }) => {
         border: '2px solid #fff',
     }
     return (
-        <div style={style} onClick={handleClick} className="rw-mark-as-read-button"></div>
+        <div style={style} onClick={handleClick}></div>
     );
 };
 
