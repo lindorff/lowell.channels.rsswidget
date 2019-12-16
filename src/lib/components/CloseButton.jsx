@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { clickable, centered, bold } from '../styles';
 
 const CloseButton = ({ handleClick }) => {
@@ -18,7 +20,7 @@ const CloseButton = ({ handleClick }) => {
             onClick={() => handleClick()}
         >
             <div>
-                {'x'}
+                <FontAwesomeIcon icon={faTimes} />
             </div>
         </div>
     );

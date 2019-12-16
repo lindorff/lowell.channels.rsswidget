@@ -13,6 +13,9 @@
     "url": "https://github.com/lindorff/lowell.channels.rsswidget"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "react-use": "^13.2.1",
     "rss-parser": "^3.7.3"
   },
