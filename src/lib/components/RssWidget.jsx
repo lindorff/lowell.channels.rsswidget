@@ -4,7 +4,7 @@ import RssItem from './RssItem';
 import CloseButton from './CloseButton';
 import OpenButton from './OpenButton';
 import readRssData from '../utils/RssReader';
-import { jcSbRow, clickable } from '../styles';
+import { jcSbRow, clickable, bold } from '../styles';
 
 const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
     const [show, setShow] = useState(false);
@@ -80,7 +80,12 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
                         handleClick={() => setShow(false)}
                     />
                     <div
-                        style={{ alignSelf: 'flex-end', padding: '0 10px 5px 0', ...clickable }}
+                        style={{
+                            alignSelf: 'flex-end',
+                            padding: '0 10px 5px 0',
+                            ...bold,
+                            ...clickable,
+                        }}
                         onClick={() => markAllAsRead(feed.filter(item => !readItems.includes(item.link)))}
                     >
                         {'Mark all as read'}
