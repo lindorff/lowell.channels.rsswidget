@@ -9,7 +9,6 @@ const App = () => {
             rssFeedSource={source}
             rssFeedType='string'
             position='right'
-            categories={['epic', 'nice']}
         />
     )
 }

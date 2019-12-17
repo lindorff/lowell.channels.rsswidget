@@ -53,7 +53,7 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position, categories }) => {
         return style;
     };
     return (
-        <div id="rw-rss-widget">
+        <div id="rw-rss-widget" style={{ display: feed.length === 0 ? 'none' : 'block' }}>
             <OpenButton
                 handleClick={() => setShow(true)}
                 count={feed ? feed.filter(item => !readItems.includes(item.link)).length : 0}
