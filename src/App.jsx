@@ -5,7 +5,12 @@ import source from './rss';
 
 const App = () => {
     return (
-        <RssWidget rssFeedSource={source} rssFeedType='string' position='right' />
+        <RssWidget
+            rssFeedSource={source}
+            rssFeedType='string'
+            position='right'
+            categories={['epic', 'nice']}
+        />
     )
 }
 

@@ -6,14 +6,14 @@ import OpenButton from './OpenButton';
 import readRssData from '../utils/RssReader';
 import { jcSbRow, clickable, bold } from '../styles';
 
-const RssWidget = ({ rssFeedSource, rssFeedType, position }) => {
+const RssWidget = ({ rssFeedSource, rssFeedType, position, categories = [] }) => {
     const [show, setShow] = useState(false);
     const [feed, setFeed] = useState([]);
     const [readItems, setReadItems] = useLocalStorage('rw-readItems', []);
 
     useEffect(() => {
-        readRssData(rssFeedSource, rssFeedType).then(res => setFeed(res));
-    }, [rssFeedSource, rssFeedType]);
+        readRssData(rssFeedSource, rssFeedType, categories).then(res => setFeed(res));
+    }, [rssFeedSource, rssFeedType, categories]);
 
     const markItemAsRead = (id) => {
         const readItemsNew = [...readItems];
