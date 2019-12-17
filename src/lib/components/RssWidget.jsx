@@ -6,7 +6,7 @@ import OpenButton from './OpenButton';
 import readRssData from '../utils/RssReader';
 import { jcSbRow, clickable, bold } from '../styles';
 
-const RssWidget = ({ rssFeedSource, rssFeedType, position, categories = [] }) => {
+const RssWidget = ({ rssFeedSource, rssFeedType, position, categories }) => {
     const [show, setShow] = useState(false);
     const [feed, setFeed] = useState([]);
     const [readItems, setReadItems] = useLocalStorage('rw-readItems', []);

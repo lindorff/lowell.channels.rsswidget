@@ -1,5 +1,9 @@
 import Parser from 'rss-parser';
-const parser = new Parser();
+const parser = new Parser({
+    customFields: {
+        item: ['category']
+    }
+});
 
 const readRssData = async (source, type, categories) => {
     let feed;
@@ -13,10 +17,11 @@ const readRssData = async (source, type, categories) => {
         default:
             throw new Error('Invalid type. Allowed types include: "url" and "string"');
     }
-    return categories.length > 0
+    return categories
         ? feed.items
-            .filter(item => item.categories
-                .every(category => categories.includes(category.$ ? category.$.term : category)))
+            .filter(item => categories.includes(item.category && item.category.$
+                ? item.category.$[Object.keys(item.category.$)[0]]
+                : item.category))
         : feed.items;
 };
 
