@@ -27,14 +27,12 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position, categories }) => {
 
     const markAllAsRead = (items) => {
         const readItemsNew = [...readItems];
-        if (items.length > 1) {
-            items.forEach((item) => {
-                if (!items.includes(item.link)) {
-                    readItemsNew.push(item.link);
-                }
-            });
-            setReadItems(readItemsNew);
-        }
+        items.forEach((item) => {
+            if (!items.includes(item.link)) {
+                readItemsNew.push(item.link);
+            }
+        });
+        setReadItems(readItemsNew);
     };
 
     const rssItems = feed !== undefined && feed.map(item => (
