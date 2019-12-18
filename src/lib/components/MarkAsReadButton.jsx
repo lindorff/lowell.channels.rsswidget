@@ -1,16 +1,12 @@
 import React from 'react';
+import styles from '../styles/MarkAsReadButton.module.css';
 
 const MarkAsReadButton = ({ handleClick, read }) => {
     const style = {
-        background: read ? '' : '#4cc0ad',
-        width: '10px',
-        height: '10px',
-        borderRadius: '50%',
-        cursor: 'pointer',
-        border: '2px solid #fff',
+        background: read ? '' : '#35A9CF',
     }
     return (
-        <div style={style} onClick={handleClick}></div>
+        <div className={styles.button} style={style} onClick={handleClick} />
     );
 };
 

@@ -1,0 +1,13 @@
+.container {
+    width: 400px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    border-left: solid 1px #707070A3;
+}
+.body {
+    background: #E8EFF9;
+    position: relative;
+    overflow-y: auto;
+    height: calc(100vh - 45px);
+}

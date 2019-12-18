@@ -1,0 +1,25 @@
+.notification {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    height: 22px;
+}
+.text {
+    font-size: 16px;
+    color: #434A4FBF;
+    align-self: flex-end;
+    margin-right: 5px;
+}
+.count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #35A9CF;
+    font-size: 12px;
+    font-weight: 900;
+    color: #fff;
+    align-self: flex-start;
+}
