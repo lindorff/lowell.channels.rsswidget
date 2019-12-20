@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use'; 
+import WidgetContainer from './WidgetContainer';
 import RssItem from './RssItem';
-import CloseButton from './CloseButton';
 import OpenButton from './OpenButton';
 import readRssData from '../utils/RssReader';
-import { jcSbRow, clickable, bold } from '../styles';
 
-const RssWidget = ({ rssFeedSource, rssFeedType, position, categories }) => {
+const RssWidget = ({ rssFeedSource, rssFeedType, position, categories, themeColor }) => {
     const [show, setShow] = useState(false);
     const [feed, setFeed] = useState([]);
     const [readItems, setReadItems] = useLocalStorage('rw-readItems', []);
@@ -43,62 +42,19 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position, categories }) => {
             link={item.link}
             markItemAsRead={markItemAsRead}
             key={item.link}
+            color={themeColor}
         />
     ));
 
-    const validPosition = ['left', 'right'].includes(position);
-    const pos = (position) => {
-        const style = {};
-        style[position] = show ? '10px' : '-400px';
-        return style;
-    };
+    
     return (
         <div id="rw-rss-widget">
             <OpenButton
                 handleClick={() => setShow(true)}
                 count={feed ? feed.filter(item => !readItems.includes(item.link)).length : 0}
+                color={themeColor}
             />
-            <div
-                style={{
-                    width: '350px',
-                    padding: '2px',
-                    border: 'solid 1px #ccc',
-                    borderRadius: '5px',
-                    background: '#eee',
-                    boxShadow: '5px 5px 10px #777',
-                    position: 'fixed',
-                    top: '10px',
-                    zIndex: '99',
-                    ...pos(position),
-                    transition: `${validPosition ? position : 'unset'} 300ms`,
-                }}
-            >
-                <div style={jcSbRow}>
-                    <CloseButton
-                        handleClick={() => setShow(false)}
-                    />
-                    <div
-                        style={{
-                            alignSelf: 'flex-end',
-                            padding: '0 10px 5px 0',
-                            ...bold,
-                            ...clickable,
-                        }}
-                        onClick={() => markAllAsRead(feed.filter(item => !readItems.includes(item.link)))}
-                    >
-                        {'Mark all as read'}
-                    </div>
-                </div>
-                <div
-                    style={{
-                        position: 'relative',
-                        maxHeight: '90vh',
-                        overflowY: 'auto',
-                    }}
-                >
-                    {rssItems}
-                </div>
-            </div>
+            <WidgetContainer rssItems={rssItems} position={position} show={show} setShow={setShow} />
         </div>
     );
 };

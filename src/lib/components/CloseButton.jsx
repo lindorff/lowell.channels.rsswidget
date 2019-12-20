@@ -1,27 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { clickable, centered, bold } from '../styles';
+import styles from '../styles/CloseButton.module.css';
 
-const CloseButton = ({ handleClick }) => {
+const CloseButton = ({ handleClick, color }) => {
     return (
         <div
-            style={{
-                borderRadius: '5px',
-                padding: '5px',
-                background: '#ccc',
-                width: '25px',
-                height: '25px',
-                marginBottom: '5px',
-                ...bold,
-                ...clickable,
-                ...centered,
-            }}
+            id="rw-widget-close-button"
+            className={styles.button}
             onClick={() => handleClick()}
         >
-            <div>
-                <FontAwesomeIcon icon={faTimes} />
-            </div>
+            <FontAwesomeIcon icon={faTimes} />
         </div>
     );
 };
