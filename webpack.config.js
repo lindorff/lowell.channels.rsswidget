@@ -40,9 +40,9 @@ module.exports = (env) => {
 
   const developmentPlugins = [
     new HtmlWebPackPlugin({
-      template: './public/index.html',
+      template: path.resolve( __dirname, 'public/index.html' ),
       filename: 'index.html'
-   })
+    })
   ];
 
   var plugins = [
@@ -71,6 +71,7 @@ module.exports = (env) => {
       library: 'RSSWidget', // How this can be accessed globally once bundled
       libraryTarget: 'umd',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
     },
     plugins: plugins,
     module: {
