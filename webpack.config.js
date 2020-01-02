@@ -3,6 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
+  console.log("Webpack Environment:", env);
   const isDev = env === 'development';
 
   const conditionalWebpackOptimization = {
@@ -54,8 +55,6 @@ module.exports = (env) => {
       ...developmentPlugins
     ];
   }
-
-  console.log("Env:", env);
 
   return {
     mode: isDev ? 'development' : 'production',
