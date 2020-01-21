@@ -4,10 +4,30 @@ import styles from '../styles/RssItem.module.css';
 import { jcSbRow } from '../styles/styles.module.css';
 
 const RssItem = ({ read, title, content, link, markItemAsRead }) => {
+    const itemClassNames = [
+        'rw-item',
+        styles.item,
+    ];
+
+    const titleClassNames = [
+        'rw-item-title',
+        styles.title,
+    ];
+
+    const contentClassNames = [
+        'rw-item-content',
+        styles.content,
+    ];
+
+    const linkClassNames = [
+        'rw-item-link',
+        styles.link,
+    ];
+
     return (
-        <div className={styles.item}>
+        <div className={itemClassNames.join(' ')}>
             <div className={jcSbRow}>
-                <div className={styles.title}>
+                <div className={titleClassNames.join(' ')}>
                     {title}
                 </div>
                 <MarkAsReadButton
@@ -17,10 +37,10 @@ const RssItem = ({ read, title, content, link, markItemAsRead }) => {
             </div>
             {!read && (
             <>
-                <div className={styles.content}>
+                <div className={contentClassNames.join(' ')}>
                     {content}
                 </div>
-                <div className={styles.link}>
+                <div className={linkClassNames.join(' ')}>
                     {!!link && <a
                         target="_blank"
                         rel="noopener noreferrer"

@@ -6,7 +6,7 @@ import styles from '../styles/CloseButton.module.css';
 const CloseButton = ({ handleClick, color }) => {
     return (
         <div
-            id="rw-widget-close-button"
+            id="rw-close-button"
             className={styles.button}
             onClick={() => handleClick()}
         >
