@@ -5,3 +5,7 @@
     width: 10px;
     height: 10px;
 }
+
+.unread {
+    background: #35A9CF;
+}

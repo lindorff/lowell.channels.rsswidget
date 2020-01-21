@@ -11,7 +11,7 @@ const WidgetContainer = ({ rssItems, position, show, setShow }) => {
     };
     return (
         <div
-            id="rw-widget-container"
+            id="rw-container"
             className={styles.container}
             style={{
                 ...pos(position),
@@ -21,7 +21,7 @@ const WidgetContainer = ({ rssItems, position, show, setShow }) => {
             <WidgetHeader setShow={setShow} />
             <div
                 className={styles.body}
-                id="rw-widget-body"
+                id="rw-body"
             >
                 {rssItems}
             </div>

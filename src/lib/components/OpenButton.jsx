@@ -12,7 +12,7 @@ const OpenButton = ({ handleClick, count }) => {
             </div>
             <div
                 className={styles.count}
-                id="rw-widget-open-button"
+                id="rw-open-button"
             >
                 {count}
             </div>
