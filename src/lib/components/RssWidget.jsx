@@ -5,13 +5,13 @@ import RssItem from './RssItem';
 import OpenButton from './OpenButton';
 import readRssData from '../utils/RssReader';
 
-const RssWidget = ({ rssFeedSource, rssFeedType, position, categories, themeColor }) => {
+const RssWidget = ({ rssFeedSource, rssFeedType, position, categories, themeColor, isConfluence }) => {
     const [show, setShow] = useState(false);
     const [feed, setFeed] = useState([]);
     const [readItems, setReadItems] = useLocalStorage('rw-readItems', []);
 
     useEffect(() => {
-        readRssData(rssFeedSource, rssFeedType, categories).then(res => setFeed(res));
+        readRssData(rssFeedSource, rssFeedType, categories, isConfluence).then(res => setFeed(res));
     }, [rssFeedSource, rssFeedType, categories]);
 
     const markItemAsRead = (id) => {
@@ -38,14 +38,13 @@ const RssWidget = ({ rssFeedSource, rssFeedType, position, categories, themeColo
         <RssItem
             read={readItems.includes(item.link)}
             title={item.title}
-            content={item.contentSnippet}
+            content={isConfluence ? item.summary : item.contentSnippet}
             link={item.link}
             markItemAsRead={markItemAsRead}
             key={item.link}
             color={themeColor}
         />
     ));
-
     
     return (
         <div id="rw-rss-widget">

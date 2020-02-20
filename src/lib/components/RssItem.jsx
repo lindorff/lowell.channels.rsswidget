@@ -38,7 +38,7 @@ const RssItem = ({ read, title, content, link, markItemAsRead }) => {
             {!read && (
             <>
                 <div className={contentClassNames.join(' ')}>
-                    {content}
+                    <span dangerouslySetInnerHTML={{__html: content}}></span>
                 </div>
                 <div className={linkClassNames.join(' ')}>
                     {!!link && <a
