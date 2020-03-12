@@ -5,7 +5,7 @@ const parser = new Parser({
     }
 });
 
-const readRssData = async (source, type, categories, isConfluence) => {
+const readData = async (source, type, categories, isConfluence) => {
     let feed;
     switch (type) {
         case 'url':
@@ -14,8 +14,17 @@ const readRssData = async (source, type, categories, isConfluence) => {
         case 'string':
             feed = await parser.parseString(source);
             break;
+        case 'jsonApi': {
+            feed = await fetch(source).then(res => res.json());
+            console.log(feed);
+            return feed.map(item => ({
+                title: item.title,
+                contentSnippet: item.body,
+                link: item.id,
+            }));
+        }
         default:
-            throw new Error('Invalid type. Allowed types include: "url" and "string"');
+            throw new Error('Invalid type. Allowed types include: "url", "string" and "jsonApi"');
     }
     if (isConfluence) {
         return feed.items.map((item) => {
@@ -37,4 +46,4 @@ const readRssData = async (source, type, categories, isConfluence) => {
         : feed.items;
 };
 
-export default readRssData;
+export default readData;

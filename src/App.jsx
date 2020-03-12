@@ -6,8 +6,10 @@ import source from './rss';
 const App = () => {
     return (
         <RssWidget
-            rssFeedSource={source}
-            rssFeedType='string'
+            feedSource='https://jsonplaceholder.typicode.com/posts'
+            // feedSource={source}
+            feedType='jsonApi'
+            // feedType='string'
             position='right'
         />
     )

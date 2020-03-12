@@ -3,16 +3,16 @@ import { useLocalStorage } from 'react-use';
 import WidgetContainer from './WidgetContainer';
 import RssItem from './RssItem';
 import OpenButton from './OpenButton';
-import readRssData from '../utils/RssReader';
+import readData from '../utils/dataReader';
 
-const RssWidget = ({ rssFeedSource, rssFeedType, position, categories, themeColor, isConfluence }) => {
+const RssWidget = ({ feedSource, feedType, position, categories, themeColor, isConfluence }) => {
     const [show, setShow] = useState(false);
     const [feed, setFeed] = useState([]);
     const [readItems, setReadItems] = useLocalStorage('rw-readItems', []);
 
     useEffect(() => {
-        readRssData(rssFeedSource, rssFeedType, categories, isConfluence).then(res => setFeed(res));
-    }, [rssFeedSource, rssFeedType, categories]);
+        readData(feedSource, feedType, categories, isConfluence).then(res => setFeed(res));
+    }, [feedSource, feedType, categories]);
 
     const markItemAsRead = (id) => {
         const readItemsNew = [...readItems];
