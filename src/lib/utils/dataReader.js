@@ -16,7 +16,6 @@ const readData = async (source, type, categories, isConfluence) => {
             break;
         case 'jsonApi': {
             feed = await fetch(source).then(res => res.json());
-            console.log(feed);
             return feed.map(item => ({
                 title: item.title,
                 contentSnippet: item.body,

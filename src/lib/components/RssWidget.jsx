@@ -39,7 +39,8 @@ const RssWidget = ({ feedSource, feedType, position, categories, themeColor, isC
             read={readItems.includes(item.link)}
             title={item.title}
             content={isConfluence ? item.summary : item.contentSnippet}
-            link={item.link}
+            itemId={item.link}
+            link={feedType === 'jsonApi' ? '' : item.link}
             markItemAsRead={markItemAsRead}
             key={item.link}
             color={themeColor}

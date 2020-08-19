@@ -3,7 +3,7 @@ import MarkAsReadButton from './MarkAsReadButton';
 import styles from '../styles/RssItem.module.css';
 import { jcSbRow } from '../styles/styles.module.css';
 
-const RssItem = ({ read, title, content, link, markItemAsRead }) => {
+const RssItem = ({ read, title, content, link, markItemAsRead, itemId }) => {
     const itemClassNames = [
         'rw-item',
         styles.item,
@@ -31,7 +31,7 @@ const RssItem = ({ read, title, content, link, markItemAsRead }) => {
                     {title}
                 </div>
                 <MarkAsReadButton
-                    handleClick={() => markItemAsRead(link)}
+                    handleClick={() => markItemAsRead(itemId)}
                     read={read}
                 />
             </div>
@@ -45,7 +45,7 @@ const RssItem = ({ read, title, content, link, markItemAsRead }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         href={link}
-                        onClick={() => markItemAsRead(link)}
+                        onClick={() => markItemAsRead(itemId)}
                     >
                         {'Read more'}
                     </a>}
