@@ -6,8 +6,8 @@ Example:
 import { RssWidget } from '@lowell-nordic/rsswidget'
 
 <RssWidget
-	rssFeedSource='someurltoresource.com'
-	rssFeedType='url'
+	feedSource='someurltoresource.com'
+	feedType='url'
 	position='right'
 />
 ```
